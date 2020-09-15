@@ -1,0 +1,26 @@
+invoice:
+  url:
+    main: https://api.einvoice.nat.gov.tw
+    # 查詢中獎發票號碼清單
+    winning: ${invoice.url.main}/PB2CAPIVAN/invapp/InvApp
+    # 查詢發票表頭
+    header: ${invoice.url.main}/PB2CAPIVAN/invapp/InvApp
+    # 查詢發票明細
+    detail: ${invoice.url.main}/PB2CAPIVAN/invapp/InvApp
+    # 捐贈碼查詢
+    loveCode: ${invoice.url.main}/PB2CAPIVAN/loveCodeapp/qryLoveCode
+    device:
+      # 載具發票表頭查詢
+      header: ${invoice.url.main}/PB2CAPIVAN/invServ/InvServ
+      # 載具發票明細查詢
+      detail: ${invoice.url.main}/PB2CAPIVAN/invServ/InvServ
+      # 載具發票捐贈
+      donate: ${invoice.url.main}/PB2CAPIVAN/CarInv/Donate
+    carrier:
+      # 手機條碼歸戶載具查詢
+      aggregate: ${invoice.url.main}/PB2CAPIVAN/Carrier/Aggregate
+
+application:
+  id: TBD
+  api:
+    key: TBD
