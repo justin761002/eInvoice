@@ -21,6 +21,7 @@ invoice:
       aggregate: ${invoice.url.main}/PB2CAPIVAN/Carrier/Aggregate
 
 application:
-  id: TBD
+  app:
+    id: REPLACE_YOUR_APP_ID
   api:
-    key: TBD
+    key: REPLACE_YOUR_API_KEY

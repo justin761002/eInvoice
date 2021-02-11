@@ -1,19 +1,25 @@
 package com.justin761002.invoice.service;
 
-import com.justin761002.invoice.data.CarrierAggregate;
+import com.justin761002.invoice.dao.InvoiceDAO;
+import com.justin761002.invoice.dto.CarrierAggregate;
+import com.justin761002.invoice.dto.WinningListResponse;
 import com.justin761002.invoice.util.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 @Service
 public class InvoiceService {
+
+
 
     @Value("${application.app.id}")
     private String appId;
@@ -25,13 +31,20 @@ public class InvoiceService {
     private String urlCarrierAggregate;
 
     @Autowired
+    private InvoiceDAO invoiceDAO;
+
+    @Autowired
     private EncryptUtil encryptUtil;
 
-    public String queryWinningList() {
-        return "queryWinningList";
+    /**
+     * 查詢中獎發票號碼清單
+     * @param yyyMM 民國年月
+     */
+    public ResponseEntity<WinningListResponse> queryWinningList(String yyyMM) {
+        return invoiceDAO.queryWinningList(yyyMM);
     }
 
-    public ResponseEntity<String> aggregateCarrier(CarrierAggregate carrierAggregate) {
+    public ResponseEntity<String>  aggregateCarrier(CarrierAggregate carrierAggregate) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -43,9 +56,9 @@ public class InvoiceService {
         map.put("cardType", carrierAggregate.getCardType());
         map.put("serial", carrierAggregate.getSerial());
 
-        Date date = new Date();
-        long timestamp = date.getTime();
-        Long time = timestamp/1000 + 100;
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        long timestamp = calendar.getTimeInMillis();
+        Long time = timestamp/1000 + 50;
 
         map.put("timeStamp", time);
         map.put("uuid", "justin_test");

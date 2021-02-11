@@ -1,8 +1,7 @@
-package com.justin761002.invoice.data;
+package com.justin761002.invoice.dto;
 
-import lombok.Data;
 
-@Data
+@lombok.Data
 public class WinningListResponse {
     private String v;
     private String code;

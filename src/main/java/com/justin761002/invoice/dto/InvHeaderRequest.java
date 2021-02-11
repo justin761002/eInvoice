@@ -1,5 +1,6 @@
-package com.justin761002.invoice.data;
+package com.justin761002.invoice.dto;
 
+@lombok.Data
 public class InvHeaderRequest {
     private String version;
     private String type;

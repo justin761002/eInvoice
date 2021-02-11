@@ -1,8 +1,6 @@
-package com.justin761002.invoice.data;
+package com.justin761002.invoice.dto;
 
-import lombok.Data;
-
-@Data
+@lombok.Data
 public class CarrierAggregate {
     String version;
     String serial;
