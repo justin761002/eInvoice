@@ -1,16 +1,15 @@
 package com.justin761002.invoice.dto;
 
-import org.springframework.beans.factory.annotation.Value;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @lombok.Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class WinningListRequest {
-    private String action = "QryWinningList";
-
+    private String action;
     private String appId;
-
     private String invTerm;
-
     private String UUID;
-
-    private String version = "0.2";
+    private String version;
 }

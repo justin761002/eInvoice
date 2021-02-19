@@ -1,6 +1,8 @@
 package com.justin761002.invoice.util;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.justin761002.invoice.dao.InvoiceDAO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.crypto.Mac;
@@ -12,6 +14,7 @@ import java.util.Base64;
 
 @Repository
 public class EncryptUtil {
+    private static final Logger logger = LoggerFactory.getLogger(EncryptUtil.class);
 
     public String hmacSHA256(String content, String key) {
         String HMAC_SHA256 = "HmacSHA256";
@@ -29,12 +32,11 @@ public class EncryptUtil {
             result = Base64.getEncoder().encodeToString(macData);
             //result = bytesToHex(macData);
         } catch (InvalidKeyException e) {
-            e.printStackTrace();
+            logger.error("InvalidKeyException: ", e);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            logger.error("NoSuchAlgorithmException: ", e);
         } finally {
             // Put any cleanup here
-//            System.out.println("Done");
         }
         return result;
     }

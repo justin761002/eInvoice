@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @lombok.Data
-@ApiModel("中獎發票號碼清單")
+@ApiModel("查詢中獎發票號碼清單")
 public class WinningListResponse {
     @ApiModelProperty(value = "版本號碼", example = "0.2")
     private String v;
