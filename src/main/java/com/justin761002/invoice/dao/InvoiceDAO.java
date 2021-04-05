@@ -4,7 +4,6 @@ import com.justin761002.invoice.dto.WinningListResponse;
 import com.justin761002.invoice.util.EncryptUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
@@ -33,9 +32,6 @@ public class InvoiceDAO {
 
     @Value("${invoice.url.carrier.aggregate}")
     private String urlCarrierAggregate;
-
-    @Autowired
-    private EncryptUtil encryptUtil;
 
     private RestTemplate restTemplate = new RestTemplate();
 
@@ -68,6 +64,7 @@ public class InvoiceDAO {
      * @param cardType 卡別
      */
     public ResponseEntity<String> queryAggregateCarrier(String cardNo, String cardEncrypt, String cardType) {
+        EncryptUtil encryptUtil = new EncryptUtil();
         String action = "qryCarrierAgg";
         String version = "1.0";
         String serial = "0000000001";

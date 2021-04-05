@@ -31,7 +31,6 @@ public class InvoiceService {
      * @param cardNo 手機條碼
      * @param cardEncrypt 手機條碼驗證碼
      * @param cardType 卡別
-     * @return
      */
     public CarrierAggregateResponse queryAggregateCarrier(String cardNo, String cardEncrypt, String cardType) {
         String response = invoiceDAO.queryAggregateCarrier(cardNo, cardEncrypt, cardType).getBody();
