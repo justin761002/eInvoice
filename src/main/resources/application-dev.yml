@@ -1,3 +1,15 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: postgres
+    url: YOUR_DB_URL
+    username: DB_USER_NAME
+    password: DB_PASSWORD
+
 invoice:
   url:
     main: https://api.einvoice.nat.gov.tw
@@ -25,3 +37,4 @@ application:
     id: REPLACE_YOUR_APP_ID
   api:
     key: REPLACE_YOUR_API_KEY
+
