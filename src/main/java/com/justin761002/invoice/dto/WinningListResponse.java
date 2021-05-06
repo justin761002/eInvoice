@@ -1,12 +1,21 @@
 package com.justin761002.invoice.dto;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.justin761002.invoice.persistence.model.WinningListEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@lombok.Data
+import java.io.Serializable;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 @ApiModel("查詢中獎發票號碼清單")
-public class WinningListResponse {
+public class WinningListResponse implements Serializable {
     @ApiModelProperty(value = "版本號碼", example = "0.2")
     private String v;
 
@@ -102,4 +111,5 @@ public class WinningListResponse {
 
     @ApiModelProperty(value = "六獎金額", example = "0000200")
     private String sixthPrizeAmt;
+
 }
